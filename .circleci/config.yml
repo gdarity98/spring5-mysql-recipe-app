@@ -5,13 +5,6 @@ version: 2.1
 orbs:
   codecov: codecov/codecov@5
 
-#workflows
-workflows:
-  upload-to-codecov:
-    jobs:
-      - checkout
-      - codecov/upload
-
 jobs:
   test-java:
     docker:
@@ -53,3 +46,8 @@ jobs:
       - run:
           name: Send to CodeCov
           command: bash <(curl -s https://codecov.io/bash)
+
+#workflows:
+#  upload-to-codecov:
+#    jobs:
+#      - codecov/upload
