@@ -5,6 +5,12 @@ version: 2.1
 orbs:
   codecov: codecov/codecov@5
 
+workflows:
+  upload-to-codecov:
+    jobs:
+      - checkout
+      - codecov/upload
+
 jobs:
   test-java:
     docker:
@@ -19,12 +25,6 @@ jobs:
     environment:
       # Customize the JVM maximum heap limit
       MAVEN_OPTS: -Xmx3200m
-
-    workflows:
-      upload-to-codecov:
-        jobs:
-          - checkout
-          - codecov/upload
 
     steps:
       - checkout
